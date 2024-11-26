@@ -12,9 +12,9 @@ import { StatusBar } from "expo-status-bar";
 import { theme } from "../theme";
 import { debounce } from "lodash";
 import { fetchLocations, fetchWeatherForecast } from "../api/weather";
-import { weatherImages } from "../constants";
 import * as Progress from "react-native-progress";
 import { storeData, getData } from "../utils/asyncStorage";
+import { getWeatherImage } from "../constants";
 
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { CalendarDaysIcon, MapPinIcon } from "react-native-heroicons/solid";
@@ -62,7 +62,7 @@ export default function HomeScreen() {
     });
   };
 
-  const handleTextDebounce = useCallback(debounce(handleSearch, 1200), []);
+  const handleTextDebounce = useCallback(debounce(handleSearch, 600), []);
 
   const { current, location } = weather;
 
@@ -147,7 +147,7 @@ export default function HomeScreen() {
             <View className="flex-row justify-center">
               <Image
                 // source={{ uri: "https:" + current?.condition?.icon }}
-                source={weatherImages[current?.condition?.text]}
+                source={getWeatherImage(current?.condition?.text)}
                 className="w-52 h-52"
               />
             </View>
@@ -196,7 +196,7 @@ export default function HomeScreen() {
 
           {/* forecast for next days */}
           <View className="mb-2 space-y-3">
-            <View className="flex-row items-center mx-5 space-x-2">
+            <View className="flex-row items-center mx-5 space-x-2 mb-2">
               <CalendarDaysIcon size="22" color="white" />
               <Text className="text-white text-base">Daily forecast</Text>
             </View>
@@ -217,7 +217,10 @@ export default function HomeScreen() {
                     style={{ backgroundColor: theme.bgWhite(0.15) }}
                   >
                     <Image
-                      source={weatherImages[item?.day?.condition?.text]}
+                      // source={weatherImages[item?.day?.condition?.text.trim()]}
+                      source={getWeatherImage(
+                        item?.day?.condition?.text.trim()
+                      )}
                       className="h-11 w-11"
                     />
                     <Text className="text-white">{dayName}</Text>
