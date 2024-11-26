@@ -2,12 +2,13 @@ import { useCallback, useEffect, useState } from "react";
 import {
   View,
   Image,
-  SafeAreaView,
   TextInput,
   TouchableOpacity,
   Text,
   ScrollView,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import { StatusBar } from "expo-status-bar";
 import { theme } from "../theme";
 import { debounce } from "lodash";
