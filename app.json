@@ -46,6 +46,12 @@
         "projectId": "3667af1a-a54c-404f-b285-14dd76dc5025"
       }
     },
-    "owner": "senriv"
+    "owner": "senriv",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/3667af1a-a54c-404f-b285-14dd76dc5025"
+    }
   }
 }
