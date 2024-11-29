@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Modal, ActivityIndicator } from "react-native";
+import { View, Text, Modal, ActivityIndicator } from "react-native";
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
-import { theme } from "@/src/theme";
 
 const ReconnectModalAlert: React.FC = () => {
   const [isConnected, setIsConnected] = useState<boolean>(true);
@@ -30,11 +29,11 @@ const ReconnectModalAlert: React.FC = () => {
     >
       <View
         className="flex-1 justify-center items-center"
-        style={{ backgroundColor: theme.bgWhite(0.15) }}
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
       >
         <View
           className="p-5 rounded-xl items-center"
-          style={{ backgroundColor: theme.bgWhite(0.15) }}
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
         >
           <ActivityIndicator size="large" color="#fff" />
           <Text className="text-white text-base font-bold mt-3">
@@ -45,20 +44,5 @@ const ReconnectModalAlert: React.FC = () => {
     </Modal>
   );
 };
-
-const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalContent: {
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center",
-  },
-});
 
 export default ReconnectModalAlert;
