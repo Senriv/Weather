@@ -1,4 +1,4 @@
-import { WeatherCondition, WeatherImages } from "../types/weather";
+import { WeatherCondition, WeatherImages } from "../types/weatherType";
 
 export const apiKey:string = "9bc6c0ecf69e46af868215854242411";
 

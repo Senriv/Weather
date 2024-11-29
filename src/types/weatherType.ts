@@ -55,3 +55,38 @@ export type WeatherCondition =
 export type WeatherImages = {
   [key in WeatherCondition]: any;
 };
+
+export type ForecastParams = {
+  cityName: string;
+  days: number | string;
+};
+
+export type WeatherType = {
+  location: {
+    name: string;
+    country: string;
+  };
+  current: {
+    temp_c: number;
+    condition: {
+      text: string;
+      icon: string;
+    };
+    wind_kph: number;
+    humidity: number;
+  };
+  forecast: {
+    forecastday: Array<{
+      date: string;
+      day: {
+        avgtemp_c: number;
+        condition: {
+          text: string;
+        };
+      };
+      astro: {
+        sunrise: string;
+      };
+    }>;
+  };
+};

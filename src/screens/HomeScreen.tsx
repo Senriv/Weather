@@ -16,17 +16,19 @@ import { fetchLocations, fetchWeatherForecast } from "../api/weather";
 import * as Progress from "react-native-progress";
 import { storeData, getData } from "../utils/asyncStorage";
 import { getWeatherImage } from "../constants";
+import { WeatherType } from "../types/weatherType";
+import { LocationType } from "../types/locationType";
 
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { CalendarDaysIcon, MapPinIcon } from "react-native-heroicons/solid";
 
 export default function HomeScreen() {
-  const [showSearch, setShowSearch] = useState(false);
-  const [locations, setLocations] = useState([]);
-  const [weather, setWeather] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [showSearch, setShowSearch] = useState<boolean>(false);
+  const [locations, setLocations] = useState<LocationType[]>([]);
+  const [weather, setWeather] = useState<WeatherType | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const handleLocation = (location: any) => {
+  const handleLocation = (location: LocationType) => {
     setLocations([]);
     setShowSearch(false);
     setLoading(true);
@@ -34,7 +36,7 @@ export default function HomeScreen() {
       cityName: location.name,
       days: "7",
     }).then((data) => {
-      setWeather(data);
+      setWeather(data as WeatherType);
       setLoading(false);
       storeData("city", location.name);
     });
@@ -43,7 +45,11 @@ export default function HomeScreen() {
   const handleSearch = (value: string) => {
     if (value.length > 2) {
       fetchLocations({ cityName: value }).then((data) => {
-        setLocations(data);
+        if (data) {
+          setLocations(data);
+        } else {
+          setLocations([]);
+        }
       });
     }
   };
@@ -65,14 +71,14 @@ export default function HomeScreen() {
 
   const handleTextDebounce = useCallback(debounce(handleSearch, 600), []);
 
-  const { current, location } = weather;
+  const { current, location } = weather || {};
 
   return (
     <View className="flex-1 relative">
       <StatusBar style="light" />
       <Image
         source={require("../../assets/images/bg.png")}
-        className=" absolute h-full w-full"
+        className="absolute h-full w-full"
         blurRadius={70}
       />
 
@@ -85,11 +91,12 @@ export default function HomeScreen() {
           {/* search section */}
           <View style={{ height: "7%" }} className="mx-4 relative z-50">
             <View
-              className="flex-row justify-end items-center rounded-full"
+              className="flex-row justify-end items-center"
               style={{
                 backgroundColor: showSearch
                   ? theme.bgWhite(0.2)
                   : "transparent",
+                borderRadius: 50,
               }}
             >
               {showSearch ? (
@@ -97,7 +104,7 @@ export default function HomeScreen() {
                   onChangeText={handleTextDebounce}
                   placeholder="Search city"
                   placeholderTextColor={"lightgray"}
-                  className="pl-6 h-10 pb-1 flex-1 text-base text-white"
+                  className="pl-6 h-10 flex-1 text-base text-white pb-1"
                 />
               ) : null}
 
@@ -148,7 +155,7 @@ export default function HomeScreen() {
             <View className="flex-row justify-center">
               <Image
                 // source={{ uri: "https:" + current?.condition?.icon }}
-                source={getWeatherImage(current?.condition?.text)}
+                source={getWeatherImage(current?.condition?.text || "other")}
                 className="w-52 h-52"
               />
             </View>
@@ -208,8 +215,9 @@ export default function HomeScreen() {
             >
               {weather?.forecast?.forecastday?.map((item, index) => {
                 let date = new Date(item.date);
-                let options = { weekday: "long" };
-                let dayName = date.toLocaleDateString("en-US", options);
+                let dayName = date.toLocaleDateString("en-US", {
+                  weekday: "long",
+                });
                 dayName = dayName.split(",")[0];
                 return (
                   <View
@@ -220,7 +228,7 @@ export default function HomeScreen() {
                     <Image
                       // source={weatherImages[item?.day?.condition?.text.trim()]}
                       source={getWeatherImage(
-                        item?.day?.condition?.text.trim()
+                        item?.day?.condition?.text.trim() || "other"
                       )}
                       className="h-11 w-11"
                     />
