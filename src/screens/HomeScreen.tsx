@@ -91,12 +91,15 @@ export default function HomeScreen() {
           {/* search section */}
           <View style={{ height: "7%" }} className="mx-4 relative z-50">
             <View
-              className="flex-row justify-end items-center"
               style={{
                 backgroundColor: showSearch
                   ? theme.bgWhite(0.2)
                   : "transparent",
                 borderRadius: 50,
+                overflow: "hidden",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                alignItems: "center",
               }}
             >
               {showSearch ? (
