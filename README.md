@@ -1,50 +1,73 @@
-# Welcome to your Expo app 👋
+# 🌤 Weather App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> A real-time weather viewing application built using React Native and Expo.
 
-## Get started
+## 📋 Description
 
-1. Install dependencies
+**Weather App** is a modern application that provides users with up-to-date weather information for any city. Its simple interface and rich functionality make it a convenient and useful tool for everyday life.
+
+## 🚀 Features
+
+- 🔍 **City Search**: Quickly search for the weather in any city using the search bar.
+- 🌤 **Detailed Weather Information**: Displays temperature, wind speed, precipitation probability, and sunrise time.
+- 📆 **Weather Forecast**: A slider with a weather forecast for several days ahead.
+- 💾 **City Saving**: Automatically saves the last selected city using `@react-native-async-storage/async-storage`.
+- 📡 **Connection Loss Alerts**: A modal window warns the user when the internet connection is lost (using `@react-native-community/netinfo`).
+- 🌙 **Aesthetic Interface**: Minimalistic design styled with Tailwind via `NativeWind`.
+- 🎨 **Beautiful Icons**: Displays weather icons using `react-native-heroicons`.
+
+## 🛠 Technologies Used
+
+- [Expo](https://expo.dev/)
+- [React Native](https://reactnative.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Axios](https://axios-http.com/) — for making API requests.
+- [NativeWind](https://www.nativewind.dev/) — styling using Tailwind.
+- [WeatherAPI](https://www.weatherapi.com/) — for fetching weather data.
+- [expo-router](https://expo.github.io/router/) — for in-app routing.
+- [@react-native-async-storage/async-storage](https://github.com/react-native-async-storage/async-storage) — for data storage.
+- [@react-native-community/netinfo](https://github.com/react-native-netinfo/react-native-netinfo) — for managing internet connection state.
+- [react-native-heroicons](https://github.com/erictheise/react-native-heroicons) — beautiful icons for the app.
+
+## 📦 Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Senriv/Weather.git
+   cd Weather
+
+   ```
+
+2. Install dependencies:
 
    ```bash
    npm install
+
    ```
 
-2. Start the app
+3. Start the project:
 
    ```bash
-    npx expo start
+   npm start
+
    ```
 
-In the output, you'll find options to open the app in a
+4. Open the app on a device or emulator by scanning the QR code via Expo Go.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🖼 Скриншоты
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+![Home Page](./docs/images/HomePage.jpg)
+![Home Page With Search](./docs/images/HomePageWithSearch.jpg)
 
-## Get a fresh project
+## 🌍 API
 
-When you're ready, run:
+The app uses [WeatherAPI](https://www.weatherapi.com/) to fetch weather data.
 
-```bash
-npm run reset-project
-```
+## 👤 Author
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+**Senriv**
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [GitHub](https://github.com/Senriv)
+- [LinkedIn](https://www.linkedin.com/in/borysenko-vitalii/)
+- 📧 Email: [borysenko.vitalii00@gmail.com](borysenko.vitalii00@gmail.com)
