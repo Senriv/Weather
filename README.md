@@ -55,10 +55,12 @@
 
 4. Open the app on a device or emulator by scanning the QR code via Expo Go.
 
-## 🖼 Скриншоты
+## 🖼 Screenshots
 
-![Home Page](./docs/images/HomePage.jpg)
-![Home Page With Search](./docs/images/HomePageWithSearch.jpg)
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="./docs/images/HomePage.jpg" alt="Home Page" width="300" />
+  <img src="./docs/images/HomePageWithSearch.jpg" alt="Home Page With Search" width="300" />
+</div>
 
 ## 🌍 API
 
